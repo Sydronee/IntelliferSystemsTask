@@ -3,16 +3,39 @@ import cors from 'cors';
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: '*'}));
 
 app.get('/api/login', (req, res) => {
   const { username, password } = req.query;
-//   password=bcrypt.hashSync(password, 10); // Send hashed password to the client for comparison
 
-  if (username === 'admin' && password === bcrypt.hashSync('admin', 10)) {
+  if (username === 'admin' && password === 'admin') {
     res.json({ success: true, message: 'Login successful' });
   } else {
     res.json({ success: false, message: 'Invalid credentials' });
+  }
+
+  return res;
+});
+
+app.get('/api/checkIn', (req, res) => {
+  const { username } = req.query;
+
+  if (username) {
+    res.json({ success: true, message: 'Check-in successful' });
+  } else {
+    res.json({ success: false, message: 'Username is required for check-in' });
+  }
+
+  return res;
+});
+
+app.get('/api/checkOut', (req, res) => {
+  const { username } = req.query;
+
+  if (username) {
+    res.json({ success: true, message: 'Check-out successful' });
+  } else {
+    res.json({ success: false, message: 'Username is required for check-out' });
   }
 
   return res;
