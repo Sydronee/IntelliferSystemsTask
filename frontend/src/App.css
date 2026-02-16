@@ -1,11 +1,22 @@
 #root {
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
 .loginBox {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 1rem;
+  padding: 2rem;
+  border: 1px solid #ffffff;
+}
+
+.loginBox input {
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.loginBox button {
+  grid-column: span 2;
 }
